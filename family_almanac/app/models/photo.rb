@@ -1,5 +1,6 @@
 class Photo < ActiveRecord::Base
-
+  has_many :users, through: :tags
+  has_many :tags
   belongs_to :user
   has_attached_file :pic,
     styles: { medium: "300x300>",

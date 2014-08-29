@@ -1,3 +1,21 @@
-<h3><%= @user.username %></h3>
+<div class="row">
+  <h3><%= @user.username %>  <small><%= link_to "Leave the Family", users_path(@user),
+                         :data => {:confirm => "You sure?  You wanna delete yourself?",
+                                   :method => "delete"},
+                         :class => "btn-xs btn-danger" %></small></h3>
+</div>
+<div class="row-fluid">
+  <div class="col-md-4">
+    <h6>Photos <%= @user.username %> has tagged</h6>
+    <% @user.tags.each do |tag| %>
+      <%= link_to (image_tag tag.photo.pic.url(:thumb)), user_photo_path(@user, tag.photo) %>
+    <% end %>
+  </div>
 
-<%= link_to "#{@user.username}'s Photos", user_photos_path(@user), class: "btn btn-info" %>
+  <div class="col-md-4">
+    <h6>Photos in which <%= @user.username %> is tagged</h6>
+    <% @tagged.each do |tag| %>
+      <%= link_to (image_tag tag.photo.pic.url(:thumb)), user_photo_path(@user, tag.photo) %>
+    <% end %>
+  </div>
+</div>

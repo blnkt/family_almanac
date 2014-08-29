@@ -1,1 +1,16 @@
-show.html.erb
+<br>
+<p><%= image_tag @photo.pic.url %></p>
+
+<h6><u>Tagged Users</u></h6>
+<% @photo.users.each do |user| %>
+  <button class="btn-xs btn-default"><%= link_to "#{user.username}", user_path(user) %></button>
+  <small><%= link_to "remove tag?", user_photo_tag_path(@user, @photo, @photo.tags.find_by(user_id: user.id)), data: {method: "delete"} %></small><br>
+  <% end %>
+</p>
+
+<% if User.all.length > @photo.users.length %>
+  <%= form_for [@user, @photo, @tag] do |f| %>
+    <%= f.collection_select :user_id, User.all - @photo.users, :id, :username %>
+    <%= f.submit "Tag 'em", class: "btn btn-primary" %>
+  <% end %>
+<% end %>

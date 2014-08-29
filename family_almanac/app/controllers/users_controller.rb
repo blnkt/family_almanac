@@ -23,6 +23,21 @@ before_filter :authorize, only: [:index, :show]
 
   def show
     @user = User.find(params[:id])
+    @tagged = Tag.where(user_id: @user.id)
+  end
+  def destroy
+    @user = User.find(params[:user_id])
+    @photos = @user.photos
+    @photos.each do |photo|
+      @tags = photo.tags
+      @tags.each do |tag|
+        tag.destroy
+      end
+      photo.destroy
+    end
+    @user.destroy
+    flash[:notice] = "Shunned."
+    redirect_to users_path
   end
 
   private

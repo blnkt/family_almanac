@@ -12,22 +12,20 @@
     <div id="user_header" class="row">
       <%= flash[:alert] %>
       <%= flash[:notice] %>
-
-      <% if current_user %>
-        <%= link_to "Home", users_path, method: "get", class: "btn btn-success" %>
-        <%= link_to "#{current_user.username}'s Profile", user_path(current_user), method: "get", class: "btn btn-warning" %>
-        <%= link_to "#{current_user.username}'s Photos", user_photos_path(current_user), method: "get", class: "btn btn-info" %>
-        <%= link_to "Add Photos", new_user_photo_path(current_user), class: "btn btn-info" %>
-        <%= link_to "Log Out", logout_path("current"), method: "get", class: "btn btn-warning" %>
-      <% else %>
-        <%= link_to "Sign Up", signup_path, class: "btn btn-info" %>
-        <%= link_to "Log in", login_path, class: "btn btn-default" %>
-      <% end %>
+      <div class="col-md-12">
+        <% if current_user %>
+          <%= link_to "Home", users_path, method: "get", class: "btn btn-success" %>
+          <%= link_to "#{current_user.username}'s Profile", user_path(current_user), method: "get", class: "btn btn-warning" %>
+          <%= link_to "#{current_user.username}'s Photos", user_photos_path(current_user), method: "get", class: "btn btn-info" %>
+          <%= link_to "Add Photos", new_user_photo_path(current_user), class: "btn btn-info" %>
+          <%= link_to "Log Out", logout_path("current"), method: "get", class: "btn btn-warning" %>
+        <% else %>
+          <%= link_to "Sign Up", signup_path, class: "btn btn-info" %>
+          <%= link_to "Log in", login_path, class: "btn btn-default" %>
+        <% end %>
+      </div>
     </div>
-
-    <div class="row">
-      <%= yield %>
-    </div>
+    <%= yield %>
   </div>
 </body>
 </html>

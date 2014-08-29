@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       flash[:notice] = "You're family!"
-      redirect_to users_path
+      redirect_to user_photos_path(user)
     else
       flash[:alert] = "Hmm...are you sure you're here?"
       render 'new'
