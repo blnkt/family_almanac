@@ -7,7 +7,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+  <%= link_to "Join the Family", new_user_path %>
+  <%= flash[:alert] %>
+  <%= flash[:notice] %>
 <%= yield %>
 
 </body>
