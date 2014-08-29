@@ -1,0 +1,7 @@
+development:
+  adapter: postgresql
+  database: fam_alm_development
+
+test:
+  adapter: postgresql
+  database: fam_alm_test
