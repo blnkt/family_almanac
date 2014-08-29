@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
 
-# before_filter :authorize, only: [:edit, :update]
+before_filter :authorize, only: [:index, :show]
+
+  def index
+    @users = User.all
+  end
 
   def new
     @user = User.new
@@ -10,15 +14,19 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to users_path
       flash[:notice] = "When you're here you're family."
+      redirect_to user_photos_path(@user)
     else
-      render "new"
+      render('new')
     end
+  end
+
+  def show
+    @user = User.find(params[:id])
   end
 
   private
   def user_params
-    params.require(:user).permit(:name, :password, :password_confirmation)
+    params.require(:user).permit(:username, :email, :password, :password_confirmation)
   end
 end

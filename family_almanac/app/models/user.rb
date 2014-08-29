@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_secure_password
   validates_uniqueness_of :email
+  has_many :photos
 
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation)

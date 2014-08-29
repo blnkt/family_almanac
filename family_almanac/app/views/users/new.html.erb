@@ -13,15 +13,19 @@
   <% end %>
 
   <div class="field">
-<!--     <%= f.label :name %><br /> -->
-    <%= f.text_field :email, placeholder: "Name" %>
+    <%= f.label :email %><br />
+    <%= f.text_field :email, placeholder: "Email" %>
+  </div>
+    <div class="field">
+    <%= f.label :username %><br />
+    <%= f.text_field :username, placeholder: "Name" %>
   </div>
   <div class="field">
-<!--     <%= f.label :password %><br /> -->
+    <%= f.label :password %><br />
     <%= f.password_field :password, placeholder: "New Password"%>
   </div>
   <div class="field">
-<!--     <%= f.label :password_confirmation%><br /> -->
+    <%= f.label :password_confirmation%><br />
     <%= f.password_field :password_confirmation, placeholder: "Confirm Password"%>
   </div>
   <div class="actions"><%= f.submit "Join the Family" %></div>
