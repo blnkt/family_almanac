@@ -1,6 +1,8 @@
 <h1><%= @user.username %>'s Photos </h1>
-
-<% @user.photos.each do |photo| %>
-  <p><%= photo.description %></p>
-  <p><%= link_to (image_tag photo.picture.url(:thumb)), user_photo_path(@user, photo) %></p>
-<% end %>
+<div class="row">
+  <div class="col-md-6"
+  <% @user.photos.each do |photo| %>
+    <p><%= link_to (image_tag photo.picture.url(:thumb)), user_photo_path(@user, photo) %></p>
+  <% end %>
+  </div>
+</div>

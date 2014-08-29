@@ -1,5 +1,5 @@
-<h1>Show the Family a New Photo</h1>
-
+<%=params.inspect%>
+<h2>Show the Family a New Photo</h2>
 <%= form_for [@user, @photo], url: user_photos_path, html: { multipart: true } do |f| %>
   <% if @photo.errors.any? %>
     <div class="error_messages">
@@ -13,8 +13,7 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.label :photo_upload %>
-    <%= f.file_field :picture %>
+    <%= f.file_field :pic %>
   </div>
   <%= f.submit "Add", class: "btn btn-primary" %>
-
+<% end %>
