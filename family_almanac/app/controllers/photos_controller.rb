@@ -1,5 +1,5 @@
 class PhotosController < ApplicationController
-  # before_filter :authorize, only: [:new, :create, :show]
+  before_filter :authorize, only: [:new, :create, :show]
 
   def index
     @user = User.find(params[:user_id])
